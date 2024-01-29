@@ -15,6 +15,7 @@ RUN \
     build-essential \
     python3-dev \
     python3-venv && \
+  pip install nvidia-cublas-cu12 nvidia-cudnn-cu12 \
   if [ -z ${WHISPER_VERSION+x} ]; then \
     WHISPER_VERSION=$(curl -sL  https://pypi.python.org/pypi/wyoming-faster-whisper/json |jq -r '. | .info.version'); \
   fi && \
