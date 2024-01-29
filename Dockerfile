@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1
 
-FROM ghcr.io/linuxserver/baseimage-ubuntu:jammy
+FROM nvidia/cuda:12.1.0-cudnn8-runtime-ubuntu22.04
 
 # set version label
 ARG BUILD_DATE
@@ -15,7 +15,6 @@ RUN \
     build-essential \
     python3-dev \
     python3-venv && \
-  pip install nvidia-cublas-cu12 nvidia-cudnn-cu12 \
   if [ -z ${WHISPER_VERSION+x} ]; then \
     WHISPER_VERSION=$(curl -sL  https://pypi.python.org/pypi/wyoming-faster-whisper/json |jq -r '. | .info.version'); \
   fi && \
